@@ -8,7 +8,7 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
 var app = express();
-
+//mongo
 require('dotenv').config()
 var mongoose = require('mongoose');
 //Set up default mongoose connection
