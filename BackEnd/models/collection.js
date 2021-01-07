@@ -11,4 +11,4 @@ collection_schema.virtual('url').get(function(){
     return '/home/collection' + this._id;
 })
 
-module.exports = mongoose.model('Collection' , collection_schema);
+module.exports = mongoose.model('Collection' , collection_schema , 'collection');

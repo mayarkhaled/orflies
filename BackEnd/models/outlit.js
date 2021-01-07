@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 var schema = mongoose.Schema;
 
 var outlit_schema = new schema({
-    item_price_afterSale : {type : string , required : true},
+    item_price_afterSale : {type : String , required : true},
     item: {type : schema.Types.ObjectId , ref : 'Item'}
 });
 
