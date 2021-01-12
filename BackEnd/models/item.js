@@ -7,7 +7,8 @@ var item_schema = new schema({
     item_category : {type : String },
     item_image : {data : Buffer  , contentType : String },
     item_collection : {type : schema.Types.ObjectId , ref : 'Collection'},
-    item_quantity : {type : Number }
+    item_quantity : {type : Number },
+    price_after_sale :{type : Number}
 });
 
 item_schema.virtual('url').get(function(){

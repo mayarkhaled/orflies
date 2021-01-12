@@ -1,5 +1,4 @@
 const collection = require('../models/collection');
-const test = require('../public/test');
 
 exports.add_collection_post = function(req , res){
     let new_collection = new collection({
