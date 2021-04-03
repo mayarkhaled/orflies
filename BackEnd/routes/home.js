@@ -2,8 +2,10 @@ var express = require('express');
 var router = express.Router();
 let itemc = require("../controllers/itemController");
 /* GET home page. */
+router.get('/' , itemc.items_list);
 router.get('/items', itemc.items_list);
 router.get('/items/:id' , itemc.item_detail);
+router.get('/filter/items' , itemc.filter_items);
 router.post('/items' , itemc.add_item_post);
 router.put('/items/:id' , itemc.update_item_post);
 router.delete('/items/:id' , itemc.delete_item_post);
