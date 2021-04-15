@@ -4,7 +4,8 @@ exports.add_collection_post = function(req , res){
     let new_collection = new collection({
         collection_name : req.body.collection_name,
         collection_description : req.body.collection_description,
-        collection_releaseDate : req.body.collection_releaseDate
+        collection_releaseDate : req.body.collection_releaseDate,
+        outer_collection  : req.body.outer_collection
     });
     new_collection.save((err) => {
         if(err)
