@@ -3,11 +3,13 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const cors = require('cors');
 
 var indexRouter = require('./routes/index');
 var collectionRouter = require('./routes/collections');
 var homeRouter = require('./routes/home');
 var app = express();
+app.use(cors());
 //mongo
 require('dotenv').config()
 var mongoose = require('mongoose');
