@@ -50,7 +50,9 @@ exports.update_item_post = function(req , res){
         price_after_sale : req.body.price_after_sale
     });
     item.findByIdAndUpdate(req.params.id , _item , {} , (err , theItem)=>{
-        res.send("updated");
+        if(err)
+            res.send("error updating the item " + err);
+        res.send(theItem);
     });
 }
 exports.delete_item_post = function(req , res){
@@ -78,4 +80,23 @@ exports.remove_sale_from_item = function(req , res){
             res.send("error add sale to this item");
         res.send("item removed")    
     })
+};
+exports.filter_items = function(req , res){
+    if(req.body.filterBy == "category"){
+        item.find({item_category : req.body.value} , 'item_image item_descrption item_price price_after_sale')
+        .exec((err, items_list)=>{
+            if(err)
+                res.send("error in get items list filtered by category");
+            res.send(items_list);    
+        });
+    }
+    if(req.body.filterBy == "price"){
+        item.find({item_price : {$lte : Number(req.body.value)}} , 'item_image item_descrption item_price price_after_sale')
+        .exec((err, items_list)=>{
+            if(err)
+                res.send("error in get items list filterd by price ");
+            res.send(items_list);    
+        });
+    }
+
 }

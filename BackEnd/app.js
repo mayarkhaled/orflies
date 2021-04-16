@@ -16,7 +16,7 @@ var mongoose = require('mongoose');
 //Set up default mongoose connection
 var mongoDB = `mongodb+srv://mayarkhaled:${process.env.DB_PASS}@cluster0.mwsie.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`;
 mongoose.connect(mongoDB, {useNewUrlParser: true, useUnifiedTopology: true});
-
+mongoose.set('useFindAndModify', false);
 //Get the default connection
 var db = mongoose.connection;
 
@@ -34,7 +34,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/collections', collectionRouter);
+app.use('/', collectionRouter);
 app.use('/home',homeRouter);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
