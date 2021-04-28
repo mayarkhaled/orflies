@@ -7,10 +7,8 @@ exports.items_list = function(req , res ){
             if(err){
                 
                 res.send("error in get items list ");
-                return;
             }
             res.send(items_list);    
-            return;
         });
 }
 
