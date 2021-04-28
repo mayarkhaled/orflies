@@ -4,9 +4,13 @@ const { body,validationResult } = require('express-validator');
 exports.items_list = function(req , res ){
     item.find({} , 'item_image item_descrption item_price price_after_sale')
         .exec((err, items_list)=>{
-            if(err)
+            if(err){
+                
                 res.send("error in get items list ");
+                return;
+            }
             res.send(items_list);    
+            return;
         });
 }
 
