@@ -14,7 +14,7 @@ app.use(cors());
 require('dotenv').config()
 var mongoose = require('mongoose');
 //Set up default mongoose connection
-var mongoDB = `mongodb+srv://mayarkhaled:1312@cluster0.mwsie.mongodb.net/Orflies?retryWrites=true&w=majority`;
+var mongoDB = `mongodb+srv://mayarkhaled:131299@cluster0.mwsie.mongodb.net/Orflies?retryWrites=true&w=majority`;
 mongoose.connect(mongoDB, {useNewUrlParser: true, useUnifiedTopology: true});
 mongoose.set('useFindAndModify', false);
 //Get the default connection
