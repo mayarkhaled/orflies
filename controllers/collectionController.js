@@ -1,5 +1,5 @@
 const collection = require('../models/collection');
-
+const item = require('../models/item');
 exports.add_collection_post = function(req , res){
     let new_collection = new collection({
         collection_name : req.body.collection_name,
@@ -22,11 +22,16 @@ exports.get_all_collections = function(req , res){
             res.send(collection_list);   
         })
 }
-exports.get_collection_detail = function(req , res ){
-    
+exports.get_collection_detail = async function(req , res ){
+
     collection.findById(req.params.id , function(err , collection_detail){
         if(err)
             res.send("error fetching collection detail");
+        
+        item.find({item_collection : req.params.id} , 'item_image item_descrption item_price price_after_sale')
+            .exec((err ,items) => {
+                res.send(items);
+            })    
         res.send(collection_detail);
     })
 };
